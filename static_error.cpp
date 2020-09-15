@@ -2,7 +2,7 @@
 
 class Test {
 public:
-	int sSequence = 0;
+	static int sSequence;
 	int mClassNo;
 	Test(void);
 	~Test(void);
