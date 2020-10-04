@@ -7,7 +7,8 @@ import os
 import sys
 import io
 import MeCab
-from urllib.parse import urlparse
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def mecab_list(text):
     tagger = MeCab.Tagger("-Ochasen")
@@ -27,10 +28,7 @@ def mecab_list(text):
     return word_class
 
 form = cgi.FieldStorage()
-
-mecab_ta = ''
-if 'mecab_ta' in form:
-    mecab_ta = form['mecab_ta'].value
+mecab_ta = form.getfirst('mecab_ta', '')
 
 test = mecab_list(mecab_ta)
 
